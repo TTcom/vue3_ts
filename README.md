@@ -1,5 +1,5 @@
 # vueonts
-
+vue3 + ts + eslint + prettierrc
 ## Project setup
 ```
 npm install

@@ -1,18 +1,25 @@
 <template>
   <div class="home">
+    {{ state.msg }}
     <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
   </div>
 </template>
-
-<script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+<script lang="ts">
+import { reactive } from "vue"
 export default {
-  name: "Home",
-  components: {
-    HelloWorld
+  setup() {
+    const state = reactive({
+      msg: "msg reactive"
+    })
+
+    const random = function(): void {
+      state.msg = Math.random()
+    }
+
+    return {
+      random,
+      state
+    }
   }
-};
+}
 </script>
