@@ -1,21 +1,27 @@
 <template>
   <div class="home">
-    {{ state.msg }}
-    {{ plus }}
+    <!-- {{ state.msg }} -->
+    plus：{{ plus }} count2：{{ count2 }}
     <img alt="Vue logo" src="../assets/logo.png" />
     <div>random:{{ random() }}</div>
     <button type="button" @click="handleClick">button</button>
+    <son></son>
   </div>
 </template>
 <script lang="ts">
-import { reactive, ref, computed, watch, watchEffect } from "vue"
+import { reactive, ref, computed, watch, watchEffect, provide } from "vue"
+import son from "./son.vue"
 export default {
+  components: {
+    son
+  },
   setup() {
     const state = reactive({
       msg: "msg reactive"
     })
     const count = ref(1)
     const count2 = ref(12)
+    provide("msg", state.msg)
     const methods = {
       random(): number {
         //state.msg = "123456"
@@ -26,9 +32,8 @@ export default {
         count.value++
       }
     }
-
     const stop = watchEffect(() => console.log(count2.value)) //立即执行传入的一个函数，并响应式追踪其依赖，并在其依赖变更时重新运行该函数。
-
+    stop() //停止侦听
     count2.value++
     const plus = computed({
       get: () => count.value + 1,
@@ -55,6 +60,7 @@ export default {
     return {
       state,
       plus,
+      count2,
       ...methods
     }
   }
