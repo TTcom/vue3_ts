@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
+    <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
-    <router-view /> -->
-    <tlabout></tlabout>
+    <router-view />
+    <!-- <tlabout></tlabout> -->
   </div>
 </template>
 <style lang="scss">
