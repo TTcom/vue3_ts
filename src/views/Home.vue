@@ -1,23 +1,29 @@
 <template>
   <div class="home">
     <!-- {{ state.msg }} -->
-    plus：{{ plus }} count2：{{ count2 }}
+    msg:{{ msg }} plus：{{ plus }} count2：{{ count2 }}
     <img alt="Vue logo" src="../assets/logo.png" />
     <div>random:{{ random() }}</div>
     <button type="button" @click="handleClick">button</button>
     <son></son>
+    <HelloWorld></HelloWorld>
+    <onrender :items="'dasda'"></onrender>
   </div>
 </template>
 <script lang="ts">
-import { reactive, ref, computed, watch, watchEffect, provide } from "vue"
+import { reactive, ref, computed, watch, watchEffect, provide, toRefs } from "vue"
 import son from "./son.vue"
+import HelloWorld from "@/components/HelloWorld.vue"
+import onrender from "@/components/onrender.tsx"
 export default {
   components: {
-    son
+    son,
+    HelloWorld,
+    onrender
   },
   setup() {
     const state = reactive({
-      msg: "msg reactive"
+      msg: "aaaaaaaaaaaaaaaaaaaaaaaa"
     })
     const count = ref(1)
     const count2 = ref(12)
@@ -58,7 +64,7 @@ export default {
       console.log(prevCount)
     })
     return {
-      state,
+      ...toRefs(state),
       plus,
       count2,
       ...methods
