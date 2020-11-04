@@ -1,24 +1,32 @@
 <template>
   <div class="about">
     <h1>This is an about page</h1>
-    <h1>{{ state.name }}</h1>
+    <h1>{{ name }}</h1>
     <button @click="handleClick">button</button>
+    <teleport to="body">
+      <Dialog v-if="isShowDialog"></Dialog>
+    </teleport>
   </div>
 </template>
 <script lang="ts">
-import { reactive, onMounted } from "vue"
+import { reactive, onMounted, toRefs } from "vue"
+import Dialog from "@/components/dialog.vue"
 export default {
+  components: {
+    Dialog
+  },
   setup() {
     const state = reactive({
-      name: "check"
+      name: "check",
+      isShowDialog: false
     })
     onMounted(() => {
       console.log("mounted!")
     })
     const methods = {
       handleClick() {
-        console.log(123456)
         state.name = "state"
+        state.isShowDialog = true
       }
     }
     let x!: number
@@ -33,7 +41,7 @@ export default {
     goOn?.(10, 25)
 
     return {
-      state,
+      ...toRefs(state),
       ...methods
     }
   }
