@@ -19,7 +19,7 @@
 import { reactive, ref, computed, watch, watchEffect, provide, toRefs, unref } from "vue"
 import son from "./son.vue"
 import HelloWorld from "@/components/HelloWorld.vue"
-import onrender from "@/components/onrender.tsx"
+import onrender from "@/components/onrender"
 import tslearn from "@/views/tslearn.vue"
 export default {
   components: {
@@ -29,6 +29,8 @@ export default {
     tslearn
   },
   setup() {
+    const amsg = (window as any).GetGlobalMsg()
+    console.log("amsg", amsg)
     const state = reactive({
       msg: "aaaaaaaaaaaaaaaaaaaaaaaa"
     })
@@ -87,6 +89,7 @@ export default {
     return {
       ...toRefs(state),
       plus,
+      amsg,
       count2,
       ...methods
     }

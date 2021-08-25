@@ -10,6 +10,9 @@ module.exports = {
       "@vue/prettier",
       "@vue/prettier/@typescript-eslint"
     ],
+    "globals":{
+        "GetGlobalMsg":"writable"
+    },
     "parserOptions": {
       "ecmaVersion": 2020
     },

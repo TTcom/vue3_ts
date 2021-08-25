@@ -12,6 +12,7 @@ const MyComponent = defineComponent({
     return () => {
       return (
         <div>
+          <span>onrendertsx</span>
           <span>{count.value}</span>
           <span>{props.items}</span>
         </div>
