@@ -29,7 +29,7 @@ export default {
     tslearn
   },
   setup() {
-    const amsg = (window as any).GetGlobalMsg()
+    const amsg = window.GetGlobalMsg()
     console.log("amsg", amsg)
     const state = reactive({
       msg: "aaaaaaaaaaaaaaaaaaaaaaaa"

@@ -1,4 +1,4 @@
 export type someType = {
     foo: string;
   };
-  export type NumGenerator = () => number;
+export type NumGenerator = () => number;
